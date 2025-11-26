@@ -2,6 +2,7 @@ Nalanda Library Management System
 
 A full-stack Library Management System built with Node.js, providing both REST API and GraphQL API for managing books, members, borrowing activity, and reports.
 
+
 Features
 
 Authentication & Authorization
@@ -16,6 +17,7 @@ Add, update, delete books (Admin only)
 Get all books, single book, paginated books
 Validation included using express-validator
 
+
 Member System
 
 Admin creates members
@@ -27,6 +29,7 @@ Issue a book
 Return a book
 Prevents duplicate issuing
 Tracks due dates and overdue items,
+
 
 Report Generation
 
@@ -59,6 +62,7 @@ git clone https://github.com/Noman1221/Nalanda_Library_Management.git
 Install Dependencies
 npm install
 
+
 Configure Environment
 Create a .env file:
 
@@ -72,6 +76,8 @@ JWT_EXPIRE=7d
 JWT_ENCRYPTION_KEY=your encription secret key
 
 ALLOWED_ORIGINS=http://localhost:3000
+
+
 
 Start the Server
 
@@ -91,7 +97,6 @@ Authentication (Admin + Member)
 Book queries & mutations
 Borrowing system
 Reports via GraphQL
-
 REST API Postman
 https://documenter.getpostman.com/view/42363556/2sB3dJyXhS
 
@@ -122,4 +127,5 @@ title
 author
 }
 }
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/990bb254-e4de-40b0-88e6-f26cd4f8c585" />
+
+
