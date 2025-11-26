@@ -1,7 +1,9 @@
+import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import connectDB from './config/database.js';
+import { createGraphQLServer, graphqlContext } from './graphql/index.js';
 
 // Import routes
 import authRoutes from './routes/authRoutes.js';
@@ -18,6 +20,9 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// Initialize GraphQL Server
+const graphqlServer = await createGraphQLServer();
+
 // Middleware
 app.use(cors({
     origin: process.env.ALLOWED_ORIGINS?.split(',') || '*',
@@ -26,22 +31,23 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// here is GraphQL endpoint
+app.use(
+    '/graphql',
+    expressMiddleware(graphqlServer, {
+        context: graphqlContext,
+    })
+);
+
+// this is REST API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/borrowings', borrowingRoutes);
 app.use('/api/reports', reportRoutes);
 
-// Health check route
-app.get('/health', (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: 'Nalanda Library System API is running',
-        timestamp: new Date().toISOString()
-    });
-});
 
-// 404 handler
+
+// for undefined route 404 handler
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -59,7 +65,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start server
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

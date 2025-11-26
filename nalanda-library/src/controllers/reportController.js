@@ -1,9 +1,8 @@
 import Book from '../models/Book.js';
 import Borrowing from '../models/Borrowing.js';
 
-// @desc    Get most borrowed books
-// @route   GET /api/reports/most-borrowed-books
-// @access  Private/Admin
+//   Get most borrowed books
+
 export const getMostBorrowedBooks = async (req, res) => {
     try {
         const limit = parseInt(req.query.limit) || 10;
@@ -66,9 +65,8 @@ export const getMostBorrowedBooks = async (req, res) => {
     }
 };
 
-// @desc    Get most active members
-// @route   GET /api/reports/active-members
-// @access  Private/Admin
+//  Get most active members
+
 export const getActiveMembers = async (req, res) => {
     try {
         const limit = parseInt(req.query.limit) || 10;
@@ -134,9 +132,8 @@ export const getActiveMembers = async (req, res) => {
     }
 };
 
-// @desc    Get book availability summary
-// @route   GET /api/reports/book-availability
-// @access  Private/Admin
+//  Get book availability summary
+
 export const getBookAvailability = async (req, res) => {
     try {
         // Get total books statistics

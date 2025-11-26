@@ -22,7 +22,7 @@ const router = express.Router();
 router.get('/', paginationValidation, validate, getBooks);
 router.get('/:id', objectIdValidation, validate, getBookById);
 
-// Protected routes - Admin only
+// Protected routes - Admin only can access
 router.post(
     '/',
     protect,

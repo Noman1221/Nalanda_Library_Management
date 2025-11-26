@@ -9,7 +9,13 @@ export const register = async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
 
-        // Check if user already exists
+        if (!name || !email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: 'Name, email, and password are required'
+            });
+        }
+        // Check if user already exists or not
         const userExists = await User.findOne({ email });
         if (userExists) {
             return res.status(400).json({
@@ -67,6 +73,12 @@ export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: 'Email and password are required'
+            });
+        }
         // Check if user exists
         const user = await User.findOne({ email });
         if (!user) {

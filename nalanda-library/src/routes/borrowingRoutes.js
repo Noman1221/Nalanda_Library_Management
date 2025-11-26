@@ -14,11 +14,11 @@ const router = express.Router();
 // Member routes
 router.post(
     '/borrow/:id',
-    protect,                    // First: Authentication
-    authorize('Member', 'Admin'), // Second: Authorization
-    objectIdValidation,         // Third: Validation
-    validate,                   // Fourth: Check validation results
-    borrowBook                  // Fifth: Controller
+    protect,
+    authorize('Member', 'Admin'),
+    objectIdValidation,
+    validate,
+    borrowBook
 );
 
 router.put(

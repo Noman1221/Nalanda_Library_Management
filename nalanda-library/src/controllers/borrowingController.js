@@ -1,15 +1,15 @@
 import Book from '../models/Book.js';
 import Borrowing from '../models/Borrowing.js';
 
-// @desc    Borrow a book (Member only)
-// @route   POST /api/borrowings/borrow/:bookId
-// @access  Private/Member
+//  Borrow a book (Member only)
+
 export const borrowBook = async (req, res) => {
     try {
         // console.log("what i get", req.params);
 
         const { id } = req.params;
         const userId = req.user.id;
+
 
         // Find the book
         const book = await Book.findById(id);
@@ -77,9 +77,8 @@ export const borrowBook = async (req, res) => {
     }
 };
 
-// @desc    Return a borrowed book
-// @route   PUT /api/borrowings/return/:borrowingId
-// @access  Private/Member
+//  Return a borrowed book
+
 export const returnBook = async (req, res) => {
     try {
         const { id } = req.params;
@@ -142,10 +141,8 @@ export const returnBook = async (req, res) => {
         });
     }
 };
+//   Get borrowing history for logged in user
 
-// @desc    Get borrowing history for logged in user
-// @route   GET /api/borrowings/my-history
-// @access  Private/Member
 export const getMyBorrowingHistory = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -186,9 +183,8 @@ export const getMyBorrowingHistory = async (req, res) => {
     }
 };
 
-// @desc    Get all borrowing records (Admin only)
-// @route   GET /api/borrowings
-// @access  Private/Admin
+// Get all borrowing records (Admin only)
+
 export const getAllBorrowings = async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;

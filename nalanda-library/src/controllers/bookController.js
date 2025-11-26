@@ -47,9 +47,7 @@ export const addBook = async (req, res) => {
     }
 };
 
-// @desc    Update book details (Admin only)
-// @route   PUT /api/books/:id
-// @access  Private/Admin
+//Update book details (Admin only)
 export const updateBook = async (req, res) => {
     try {
         const { id } = req.params;
@@ -95,9 +93,7 @@ export const updateBook = async (req, res) => {
     }
 };
 
-// @desc    Delete a book (Admin only)
-// @route   DELETE /api/books/:id
-// @access  Private/Admin
+//  Delete a book (Admin only)
 export const deleteBook = async (req, res) => {
     try {
         const { id } = req.params;
@@ -126,9 +122,7 @@ export const deleteBook = async (req, res) => {
     }
 };
 
-// @desc    Get all books with pagination and filtering
-// @route   GET /api/books
-// @access  Public
+// Get all books with pagination and filtering
 export const getBooks = async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
@@ -176,9 +170,8 @@ export const getBooks = async (req, res) => {
     }
 };
 
-// @desc    Get single book by ID
-// @route   GET /api/books/:id
-// @access  Public
+//  Get single book by ID
+
 export const getBookById = async (req, res) => {
     try {
         const { id } = req.params;
